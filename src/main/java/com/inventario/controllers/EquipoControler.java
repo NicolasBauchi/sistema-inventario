@@ -1,17 +1,23 @@
 package com.inventario.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.inventario.dao.EquipoDao;
+import com.inventario.models.Equipo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.ArrayList;
+
+@RestController
 public class EquipoControler {
 
-    @RequestMapping("/brian")
-    @ResponseBody
-    public String hacerHuevo(){
+    @Autowired
+    private EquipoDao equipoDao;
 
-        return "<h1>BRIAN SE LA COME</h1> <br> <h2>nico capo</h2>";
+    @RequestMapping("equipos")
+    public ArrayList<Equipo> getEquipos(){
+        return equipoDao.getEquipos();
     }
+
+
 }
