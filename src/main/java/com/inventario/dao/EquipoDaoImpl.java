@@ -17,10 +17,22 @@ public class EquipoDaoImpl implements EquipoDao{
 
     @Override
     public ArrayList<Equipo> getEquipos() {
-       String query = "FROM Equipo";
+       String query = "SELECT * FROM Equipo";
        return (ArrayList<Equipo>) entityManager.createQuery(query).getResultList();
+    }
 
+    @Override
+    public Equipo getEquipo(int id) {
+        String query = "SELECT * FROM Equipo WHERE id=" + id;
+        return (Equipo) entityManager.createQuery(query).getResultList();
+    }
 
+    //Editar equipo
+    @Override
+    public void setEquipo(Equipo equipo) {
 
     }
+
+
+
 }

@@ -11,23 +11,23 @@ public class Equipo {
 
     @Column(name = "id")
     @Id
-    int id;
+    private int id;
     @Column(name = "cliente")
-    String cliente;
+    private String cliente;
     @Column(name = "propiedad")
-    String propiedad;
+    private String propiedad;
     @Column(name = "serie")
-    String serie;
+    private String serie;
     @Column(name = "tipo")
-    String tipo_equipo;
+    private String tipo_equipo;
     @Column(name = "marca")
-    String marca;
+    private String marca;
     @Column(name = "modelo")
-    String modelo;
+    private String modelo;
     @Column(name = "servicio")
-    String servicio;
+    private String servicio;
     @Column(name = "ubicacion")
-    String ubicacion;
+    private String ubicacion;
 
     public int getId() {
         return id;

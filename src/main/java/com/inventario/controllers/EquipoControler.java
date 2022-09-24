@@ -19,5 +19,8 @@ public class EquipoControler {
         return equipoDao.getEquipos();
     }
 
+    public Equipo getEquipo(){
+        return null;
+    }
 
 }
