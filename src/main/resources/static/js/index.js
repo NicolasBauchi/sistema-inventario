@@ -1,4 +1,3 @@
-const { t } = require("tar");
 
 /* Clases */
 class Equipo {
@@ -52,7 +51,6 @@ async function mostrarListado() {
 function cargarPagina(equipos) {
 
     let tabla = document.getElementById("tabla-equipos-nb");
-    let trow = document.createElement("tr");
 
     let contador = 1;
     equipos.forEach(el => {
@@ -64,6 +62,7 @@ function cargarPagina(equipos) {
             let td = document.createElement("td");
 
             if (i == 0) {
+                td.setAttribute(`scope="row"`);
                 td.innerHTML(String(contador));
             }
             if (i == 1) {
@@ -84,7 +83,7 @@ function cargarPagina(equipos) {
             trow.appendChild(td);
         }
 
-
+        tabla.append(trow);
     });
 
 
