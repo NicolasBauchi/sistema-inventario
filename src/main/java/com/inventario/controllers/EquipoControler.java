@@ -22,10 +22,10 @@ public class EquipoControler {
     }
 
     //Buscar 1 equipo
-    /*@RequestMapping(value = "equipos/{id}" , method = RequestMethod.GET)
+    @RequestMapping(value = "equipos/{id}" , method = RequestMethod.GET)
     public Equipo buscar(@PathVariable int id){
         return null;
-    }**/
+    }
 
     //Eliminar 1 equipo
     @RequestMapping(value = "equipos/{id}" , method = RequestMethod.DELETE)

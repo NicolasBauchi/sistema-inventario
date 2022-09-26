@@ -61,22 +61,33 @@ function cargarPagina(equipos) {
 
 function eventoBotones() {
     let botones = document.getElementsByClassName("btn-eliminar");
- console.log(botones);
     for (const boton of botones) {
         let { id } = boton;
-        console.log("id equipo elegido="+id)
+        /* codigo para borrar 1 linea sin recargar pag
+        agrego evento:
+        boton.addEventListener("click", (event) => {
+             eliminarEquipo(id); 
+             event.target.parentNode-> acceso a td, si sumo .parendtnode+
+             accedo a tr, luego agrego .remove() y elimino la fila,
+             probar,pero deberia eliminar fila y no recargar pag entera.
+            console.log(event.target.parentNode);
+        }) */
+
         boton.onclick = () => { eliminarEquipo(id) };
     }
 }
 
 async function eliminarEquipo(id) {
-    const resp = await fetch('equipos' + id, {
+    //metodo para enviar info a eliminar
+    const resp = await fetch('equipos' + "/" + id, {
         method: 'DELETE',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
     });
+    //Recarga pagina:
+    location.reload();
 }
 
 /* fin cargados */
