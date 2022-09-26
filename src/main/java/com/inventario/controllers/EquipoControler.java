@@ -19,9 +19,9 @@ public class EquipoControler {
     }
 
     //Agregar 1 equipo
-    @RequestMapping(value = "equipos" , method = RequestMethod.POST)
+    @RequestMapping(value = "ingresar-equipo" , method = RequestMethod.POST)
     public void agregarEquipo(@RequestBody Equipo equipo){
-        //con RequestBody: converite el json que recibe en un equipo automaticamente.
+        //con RequestBody: converite el json que recibe en un objeto Equipo automaticamente.
         equipoDao.agregar(equipo);
     }
 
