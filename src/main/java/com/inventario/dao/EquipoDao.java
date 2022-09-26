@@ -12,7 +12,9 @@ public interface EquipoDao {
     public Equipo getEquipo(int id);
 
     //Editar equipo
-    public void setEquipo(Equipo equipo);
+    public void editarEquipo(Equipo equipo);
 
     void eliminar(int id);
+
+    void agregar(Equipo equipo);
 }

@@ -29,14 +29,19 @@ public class EquipoDaoImpl implements EquipoDao{
 
     //Editar equipo
     @Override
-    public void setEquipo(Equipo equipo) {
-
+    public void editarEquipo(Equipo equipo) {
+//rellenar
     }
 
     @Override
     public void eliminar(int id) {
         Equipo equipo = entityManager.find(Equipo.class, id);
         entityManager.remove(equipo);
+    }
+
+    @Override
+    public void agregar(Equipo equipo) {
+        entityManager.merge(equipo);
     }
 
 

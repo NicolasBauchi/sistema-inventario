@@ -3,10 +3,7 @@ package com.inventario.controllers;
 import com.inventario.dao.EquipoDao;
 import com.inventario.models.Equipo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -16,15 +13,16 @@ public class EquipoControler {
     @Autowired
     private EquipoDao equipoDao;
 
-    @RequestMapping("equipos")
+    @RequestMapping(value = "equipos", method = RequestMethod.GET)
     public ArrayList<Equipo> getEquipos(){
         return equipoDao.getEquipos();
     }
 
-    //Buscar 1 equipo
-    @RequestMapping(value = "equipos/{id}" , method = RequestMethod.GET)
-    public Equipo buscar(@PathVariable int id){
-        return null;
+    //Agregar 1 equipo
+    @RequestMapping(value = "equipos" , method = RequestMethod.POST)
+    public void agregarEquipo(@RequestBody Equipo equipo){
+        //con RequestBody: converite el json que recibe en un equipo automaticamente.
+        equipoDao.agregar(equipo);
     }
 
     //Eliminar 1 equipo
