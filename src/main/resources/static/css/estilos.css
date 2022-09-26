@@ -8428,22 +8428,23 @@ footer h5:hover, footer .h5:hover {
   height: 100px; }
 
 @media (max-width: 760px) {
+  .btn-eliminar {
+    display: flex;
+    align-items: center; }
+    .btn-eliminar img {
+      height: 16px; } }
+
+@media (min-width: 761px) {
+  .btn-eliminar img {
+    height: 22px; } }
+
+@media (max-width: 760px) {
   .tabla-nb-contenedor table tbody tr td {
-    font-size: 80%; }
-    .tabla-nb-contenedor table tbody tr td button {
-      display: flex;
-      align-items: center; }
-      .tabla-nb-contenedor table tbody tr td button img {
-        height: 16px; } }
+    font-size: 80%; } }
 
 @media (min-width: 761px) {
   .tabla-nb-contenedor table tbody tr td {
-    font-size: 20px; }
-    .tabla-nb-contenedor table tbody tr td button {
-      display: flex;
-      align-items: center; }
-      .tabla-nb-contenedor table tbody tr td button img {
-        height: 22px; } }
+    font-size: 20px; } }
 
 @media (max-width: 760px) {
   .img-logo-nb {

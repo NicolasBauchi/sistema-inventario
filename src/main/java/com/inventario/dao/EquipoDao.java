@@ -14,4 +14,5 @@ public interface EquipoDao {
     //Editar equipo
     public void setEquipo(Equipo equipo);
 
+    void eliminar(int id);
 }

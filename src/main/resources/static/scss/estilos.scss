@@ -44,33 +44,34 @@ footer h5:hover {
   font-size: 2rem;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-.h100px{
+.h100px {
   height: 100px;
 }
+.btn-eliminar {
+  @media (max-width: 760px) {
+    display: flex;
+    align-items: center;
+    img {
+      height: 16px;
+    }
+  }
+  @media (min-width: 761px) {
+    img {
+      height: 22px;
+    }
+  }
+}
+
 .tabla-nb-contenedor table tbody tr td {
   @media (max-width: 760px) {
-    button {
-      display: flex;
-      align-items: center;
-      img {
-        height: 16px;
-      }
-    }
     font-size: 80%;
   }
   @media (min-width: 761px) {
-    button {
-      display: flex;
-      align-items: center;
-      img {
-        height: 22px;
-      }
-    }
     font-size: 20px;
   }
 }
 
-.img-logo-nb{
+.img-logo-nb {
   @media (max-width: 760px) {
     width: 100%;
   }
@@ -79,7 +80,7 @@ footer h5:hover {
   }
 }
 
-.formulario-listas{
+.formulario-listas {
   @media (max-width: 760px) {
     width: 100%;
   }
@@ -87,4 +88,3 @@ footer h5:hover {
     width: 50%;
   }
 }
-

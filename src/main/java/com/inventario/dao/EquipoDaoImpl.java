@@ -17,13 +17,13 @@ public class EquipoDaoImpl implements EquipoDao{
 
     @Override
     public ArrayList<Equipo> getEquipos() {
-       String query = "SELECT * FROM Equipo";
+       String query = "FROM Equipo";
        return (ArrayList<Equipo>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
     public Equipo getEquipo(int id) {
-        String query = "SELECT * FROM Equipo WHERE id=" + id;
+        String query = "FROM Equipo WHERE id='" + id+"'";
         return (Equipo) entityManager.createQuery(query).getResultList();
     }
 
@@ -33,6 +33,11 @@ public class EquipoDaoImpl implements EquipoDao{
 
     }
 
+    @Override
+    public void eliminar(int id) {
+        Equipo equipo = entityManager.find(Equipo.class, id);
+        entityManager.remove(equipo);
+    }
 
 
 }
