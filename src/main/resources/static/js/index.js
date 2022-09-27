@@ -19,10 +19,19 @@ class Equipo {
 
 /* index */
 /* Aca tengo recibir los datos y procesarlos en el BACK. */
+eventoFormulario();
 
 /* Seccion registro de equipo */
-async function registrarEquipo() {
+function eventoFormulario() {
 
+    let miform = document.getElementById("form-ingreso-equipo");
+    miform.addEventListener("submit", registrarEquipo);
+    console.log("Se cargó el metodo eventoFormulario");
+}
+
+async function registrarEquipo(e) {
+
+    e.preventDefault();
     let datos = {};
     datos.cliente = document.getElementById("form-cliente").value;
     datos.propiedad = document.getElementById("form-propiedad").value;
@@ -33,7 +42,7 @@ async function registrarEquipo() {
     datos.servicio = document.getElementById("form-servicio").value;
     datos.ubicacion = document.getElementById("form-ubicacion").value;
 
-    const resp = await fetch('equipos', {
+    const resp = await fetch('ingresar-equipo', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
