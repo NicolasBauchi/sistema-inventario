@@ -16,10 +16,15 @@ class Equipo {
 }
 
 /* fin clases */
-
+var paginaActual = window.location.pathname;
 /* index */
 /* Aca tengo recibir los datos y procesarlos en el BACK. */
-eventoFormulario();
+if (paginaActual == "/index.html") {
+    console.log("si señor papaa");
+    eventoFormulario();
+}
+
+
 
 /* Seccion registro de equipo */
 function eventoFormulario() {
@@ -67,5 +72,15 @@ async function registrarEquipo(e) {
 
 /* listas */
 /* En esta seccion tengo que subir las listas a la BD */
+/* con esto determino que estoy en esta pagina y ejecuto su Js. */
+if (paginaActual == "/listas.html") {
+    
+
+
+
+
+
+
+}
 
 /* fin listas */
