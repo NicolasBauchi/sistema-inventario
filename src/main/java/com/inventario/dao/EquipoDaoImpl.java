@@ -30,7 +30,7 @@ public class EquipoDaoImpl implements EquipoDao{
     //Editar equipo
     @Override
     public void editarEquipo(Equipo equipo) {
-//rellenar
+        //no se . buscar como editar
     }
 
     @Override

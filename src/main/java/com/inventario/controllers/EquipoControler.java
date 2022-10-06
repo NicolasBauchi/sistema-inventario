@@ -32,5 +32,31 @@ public class EquipoControler {
     }
 
     //Editar 1 equipo
+    @RequestMapping(value = "equipos/{id}", method = RequestMethod.PUT)
+    public void editarEquipo(@PathVariable Equipo equipo){
+        equipoDao.editarEquipo(equipo);
+    }
+
+    @RequestMapping(value = "subirTablas/{tipo}", method = RequestMethod.POST)
+    public void subirTablas(@PathVariable ArrayList<String> elListado){
+
+        /*
+
+        if (){
+
+        }
+
+        if (){
+
+        }
+
+        if (){
+
+        }
+**/
+    }
+
+
+
 
 }
