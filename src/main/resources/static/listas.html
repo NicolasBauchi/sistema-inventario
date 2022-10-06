@@ -56,12 +56,12 @@
 
                     <div class="col-12 d-flex justify-content-center">
                         <!-- Listado clientes -->
-                        <form method="post" action="subirListado.php" enctype="multipart/form-data"
-                            class="formulario-listas">
+                        <form method="post" enctype="multipart/form-data" class="formulario-listas"
+                            id="form-subida-clientes">
                             <div class="input-group">
-                                <input type="file" class="form-control" id="inputGroupFile04"
+                                <input type="file" accept=".csv, .txt" class="form-control" id="input-clientes"
                                     aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                <button class="btn btn-primary px-4" type="button"
+                                <button class="btn btn-primary px-4" type="submit"
                                     id="inputGroupFileAddon04">CLIENTES</button>
                             </div>
                         </form>
@@ -69,40 +69,40 @@
 
                     <div class="col-12 d-flex justify-content-center">
                         <!-- Listado marcas -->
-                        <form method="post" action="subirListado.php" enctype="multipart/form-data"
-                            class="formulario-listas">
+                        <form method="post" action="subirListado" enctype="multipart/form-data"
+                            class="formulario-listas" id="form-subida-marcas">
                             <div class="input-group">
-                                <input type="file" class="form-control" id="inputGroupFile04"
-                                    aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                <button class="btn btn-primary px-4" type="button"
-                                    id="inputGroupFileAddon04">MARCAS</button>
+                                <input type="file" class="form-control" id="input-marcas"
+                                    aria-describedby="inputGroupFileAddon05" aria-label="Upload">
+                                <button class="btn btn-primary px-4" type="submit"
+                                    id="inputGroupFileAddon05">MARCAS</button>
                             </div>
                         </form>
                     </div>
 
                     <div class="col-12 d-flex justify-content-center">>
                         <!-- Listado servicio -->
-                        <form method="post" action="subirListado.php" enctype="multipart/form-data"
-                            class="formulario-listas">
+                        <form method="post" action="subirListado" enctype="multipart/form-data"
+                            class="formulario-listas" id="form-subida-servicios">
                             <div class="input-group">
-                                <input type="file" class="form-control" id="inputGroupFile04"
-                                    aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                <button class="btn btn-primary px-4" type="button"
-                                    id="inputGroupFileAddon04">SERVICIOS</button>
+                                <input type="file" class="form-control" id="input-servicios"
+                                    aria-describedby="inputGroupFileAddon06" aria-label="Upload">
+                                <button class="btn btn-primary px-4" type="submit"
+                                    id="inputGroupFileAddon06">SERVICIOS</button>
                             </div>
                         </form>
                     </div>
 
                     <div class="col-12 d-flex justify-content-center">
 
-                        <!-- Listado tipo equipo -->
-                        <form method="post" action="subirListado.php" enctype="multipart/form-data"
-                            class="formulario-listas">
+                        <!-- Listado tipos de equipos -->
+                        <form method="post" action="subirListado" enctype="multipart/form-data"
+                            class="formulario-listas" id="form-subida-tipos">
                             <div class="input-group">
-                                <input type="file" class="form-control" id="inputGroupFile04"
-                                    aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                <button class="btn btn-primary px-4" type="button" id="inputGroupFileAddon04">TIPOS DE
-                                    EQUIPO</button>
+                                <input type="file" class="form-control" id="input-tipos"
+                                    aria-describedby="inputGroupFileAddon07" aria-label="Upload">
+                                <button class="btn btn-primary px-4" type="submit" id="inputGroupFileAddon07">TIPOS DE
+                                    EQUIPOS</button>
                             </div>
                         </form>
                     </div>

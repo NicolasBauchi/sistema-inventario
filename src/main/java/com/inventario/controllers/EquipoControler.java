@@ -4,7 +4,6 @@ import com.inventario.dao.EquipoDao;
 import com.inventario.models.Equipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 
 @RestController
@@ -37,25 +36,29 @@ public class EquipoControler {
         equipoDao.editarEquipo(equipo);
     }
 
-    @RequestMapping(value = "subirTablas/{tipo}", method = RequestMethod.POST)
-    public void subirTablas(@PathVariable ArrayList<String> elListado){
 
-        /*
+    /* Subiendo las tablas a la BD: **/
+    @RequestMapping(value = "subirTablas/clientes", method = RequestMethod.POST)
+    public void subirTablaCliente(ArrayList<String> elListado){
+    //completar !!
 
-        if (){
+    }
+    @RequestMapping(value = "subirTablas/marcas", method = RequestMethod.POST)
+    public void subirTablaMarca(@PathVariable ArrayList<String> elListado){
+    //completar !!
 
-        }
-
-        if (){
-
-        }
-
-        if (){
-
-        }
-**/
     }
 
+    @RequestMapping(value = "subirTablas/servicios", method = RequestMethod.POST)
+    public void subirTablaServicio(@PathVariable ArrayList<String> elListado){
+        //completar !!
+
+    }
+    @RequestMapping(value = "subirTablas/tipoEquipos", method = RequestMethod.POST)
+    public void subirTablaTipoEquipo(@PathVariable ArrayList<String> elListado){
+        //completar !!
+
+    }
 
 
 
