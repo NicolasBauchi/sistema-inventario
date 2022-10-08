@@ -37,29 +37,6 @@ public class EquipoControler {
     }
 
 
-    /* Subiendo las tablas a la BD: **/
-    @RequestMapping(value = "subirTablas/clientes", method = RequestMethod.POST)
-    public void subirTablaCliente(ArrayList<String> elListado){
-    //completar !!
-
-    }
-    @RequestMapping(value = "subirTablas/marcas", method = RequestMethod.POST)
-    public void subirTablaMarca(@PathVariable ArrayList<String> elListado){
-    //completar !!
-
-    }
-
-    @RequestMapping(value = "subirTablas/servicios", method = RequestMethod.POST)
-    public void subirTablaServicio(@PathVariable ArrayList<String> elListado){
-        //completar !!
-
-    }
-    @RequestMapping(value = "subirTablas/tipoEquipos", method = RequestMethod.POST)
-    public void subirTablaTipoEquipo(@PathVariable ArrayList<String> elListado){
-        //completar !!
-
-    }
-
 
 
 }
