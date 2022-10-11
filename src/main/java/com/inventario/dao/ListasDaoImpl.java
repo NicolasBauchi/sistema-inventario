@@ -18,20 +18,33 @@ public class ListasDaoImpl implements ListasDao{
     //Tabla clientes
 
     @Override
-    public ArrayList<cliente> nombresClientes() {
+    public ArrayList<Cliente> nombresClientes() {
         String query = "FROM cliente";
-        return (ArrayList<cliente>) entityManager.createQuery(query).getResultList();
+        return (ArrayList<Cliente>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
-    public cliente getCliente(int id) {
+    public Cliente getCliente(int id) {
         String query = "FROM cliente WHERE id='" + id+"'";
-        return (cliente) entityManager.createQuery(query).getResultList();
+        return (Cliente) entityManager.createQuery(query).getResultList();
     }
 
     @Override
-    public void agregarCliente(cliente cliente1) {
+    public void agregarCliente(Cliente cliente1) {
         entityManager.merge(cliente1);
+    }
+
+    @Override
+    public void agregarMuchosClientes(ArrayList<String> losClientes) {
+        //entityManager.merge(losClientes);
+
+        for (int i = 0; i < losClientes.size(); i++) {
+
+            Cliente cl = new Cliente();
+            cl.setNombre(""+i);
+            entityManager.merge(cl);
+        }
+
     }
 
 
@@ -54,6 +67,11 @@ public class ListasDaoImpl implements ListasDao{
         entityManager.merge(marca);
     }
 
+    @Override
+    public void agregarMuchasMarcas(ArrayList<Marca> lasMarcas) {
+        entityManager.merge(lasMarcas);
+    }
+
     //Tabla servicios
 
     @Override
@@ -73,6 +91,11 @@ public class ListasDaoImpl implements ListasDao{
         entityManager.merge(servicios);
     }
 
+    @Override
+    public void agregarMuchosServicios(ArrayList<Servicios> losServicios) {
+
+    }
+
     //Tabla tipo equipos
 
     @Override
@@ -90,5 +113,10 @@ public class ListasDaoImpl implements ListasDao{
     @Override
     public void agregarTipoEquipos(TipoEquipos tipoEquipos) {
         entityManager.merge(tipoEquipos);
+    }
+
+    @Override
+    public void agregarMuchosTipoEquipos(ArrayList<TipoEquipos> losTipoEquipos) {
+
     }
 }

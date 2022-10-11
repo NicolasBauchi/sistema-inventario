@@ -87,11 +87,15 @@ if (paginaActual == "/listas.html") {
         //Acá pregunto si se eligió archivo:
         let archivo = document.getElementById("input-clientes").files[0];
 
+
+
         if (archivo) {
+            console.log("entro archivo");
             let reader = new FileReader();
             reader.addEventListener('load', (evt) => {
                 //Acá obtengo el archivo subido:
                 let datos = evt.target.result;
+
                 /* Aca tengo que trabajar con el archivo CSV.
                 antes de enviar la info al server.
                 Podría crear objetos, cargar un array y enviarlo al svr. */
@@ -100,7 +104,12 @@ if (paginaActual == "/listas.html") {
                 //si lo tuviera el archivo csv
                 for (let i = 0; i < lasLíneas.length; i++) {
                     let columna = lasLíneas[i].split(";");
-                    arrayColumnasNombre.push(columna[0]);
+                    console.log("contenido columna 0 -> " + columna[0]);
+                    let objeto = {nombre: columna[0]};
+                    /* objeto.nombre = columna[0]; */
+                    console.log("objeto -> "+ objeto.nombre);
+                    arrayColumnasNombre.push(objeto);
+
                 }
 
 
@@ -112,6 +121,11 @@ if (paginaActual == "/listas.html") {
             alert("No se ha seleccionado un archivo.");
             return;
         }
+        /* headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        } */
+        console.log(arrayColumnasNombre[0][0]);
 
         const clientes = await fetch('subirTablas/clientes', {
             method: 'POST',
@@ -119,9 +133,43 @@ if (paginaActual == "/listas.html") {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(arrayColumnasNombre)
+            body: JSON.stringify(arrayColumnasNombre[0][0])
         });
-        location.reload();
+        console.log(clientes);
+
+       /*  
+        for (let i = 0; i < arrayColumnasNombre.length; i++) {
+            let clienteJson = arrayColumnasNombre[i];
+
+
+            const clientes = await fetch('subirTablas/clientes', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(clienteJson)
+            });
+
+            console.log(clientes);
+
+            console.log(clienteJson);
+        } */
+
+
+
+        /* const clientes = await fetch('subirTablas/clientes', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            } ,
+         body: JSON.stringify(arrayColumnasNombre) 
+        }); */
+
+        /* console.log(arrayColumnasNombre);
+        console.log(JSON.stringify(arrayColumnasNombre)); */
+        /* location.reload(); */
 
 
 
@@ -144,6 +192,6 @@ if (paginaActual == "/listas.html") {
 
 
     }
-/* fin listas */
+    /* fin listas */
 
 }
