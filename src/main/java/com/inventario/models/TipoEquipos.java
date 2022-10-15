@@ -1,9 +1,6 @@
 package com.inventario.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tipoequipos")
@@ -11,6 +8,7 @@ public class TipoEquipos {
 
     @Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     @Column(name = "nombre_tipoEquipos")

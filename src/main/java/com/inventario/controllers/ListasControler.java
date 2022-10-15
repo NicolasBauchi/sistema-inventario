@@ -21,30 +21,7 @@ public class ListasControler {
     /* Subiendo las tablas a la BD: **/
     @RequestMapping(value = "subirTablas/clientes", method = RequestMethod.POST)
     public void subirTablaCliente(@RequestBody Cliente cl){
-
         listasDao.agregarCliente(cl);
-/*
-        String[] renglones = data.split("\r\n");
-
-
-        for (int i = 0; i < renglones.length; i++) {
-            String[] columnas = renglones[i].split(";");
-
-
-            cliente cl = new cliente();
-            cl.setNombre(columnas[0]);
-            listasDao.agregarCliente(cl);
-        }
-
-        //String[] renglones = laTabla.split("\r\n");
-
-       /*for (int i = 0; i < cls.getLosClientes().size(); i++) {
-            cliente cl =  cls.getLosClientes().get(i);
-            listasDao.agregarCliente(cl);
-        }**/
-
-
-
     }
     @RequestMapping(value = "subirTablas/marcas", method = RequestMethod.POST)
     public void subirTablaMarca(@PathVariable ArrayList<Marca> elListado){

@@ -8,6 +8,7 @@ public class Cliente {
 
     @Column(name = "id")
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     @Column(name = "nombre_cliente")
