@@ -82,12 +82,47 @@ if (paginaActual == "/listas.html") {
 
     function enviarListadoClientes(e) {
         e.preventDefault();
-        const arrayColumnasNombre = [];
         //Acá pregunto si se eligió archivo:
         let archivo = document.getElementById("input-clientes").files[0];
 
+        leerData(archivo, "clientes");
 
+        /* location.reload(); */
 
+    }
+
+    async function enviarListadoMarcas(e) {
+        e.preventDefault();
+        //Acá pregunto si se eligió archivo:
+        let archivo = document.getElementById("input-marcas").files[0];
+
+        leerData(archivo, "marcas");
+
+        /* location.reload(); */
+    }
+
+    async function enviarListadoServicios(e) {
+        e.preventDefault();
+        //Acá pregunto si se eligió archivo:
+        let archivo = document.getElementById("input-servicios").files[0];
+
+        leerData(archivo, "servicios");
+
+        /* location.reload(); */
+    }
+
+    async function enviarListadoTipos(e) {
+        e.preventDefault();
+        //Acá pregunto si se eligió archivo:
+        let archivo = document.getElementById("input-tipos").files[0];
+        
+        leerData(archivo, "tipoEquipos");
+
+        /* location.reload(); */
+    }
+
+    function leerData(archivo, queTabla) {
+        const arrayColumnasNombre = [];
         if (archivo) {
             let reader = new FileReader();
             reader.addEventListener('load', (evt) => {
@@ -111,8 +146,8 @@ if (paginaActual == "/listas.html") {
                 let enviar = {};
                 enviar.nombre = String(arrayColumnasNombre[0]);
 
-                enviarDataServer(enviar);
-
+                enviarDataServer(enviar, queTabla);
+                
             })
 
             reader.readAsText(archivo);
@@ -120,15 +155,16 @@ if (paginaActual == "/listas.html") {
             alert("No se ha seleccionado un archivo.");
             return;
         }
-        
-        /* location.reload(); */
-
-
-
     }
 
     async function enviarDataServer(dato, tabla) {
-        const clientes = await fetch('subirTablas/clientes', {
+        console.log("Datos antes de ser enviados por fetch: ");
+        console.log("Dato");
+        console.log(dato);
+        console.log("Tabla:");
+        console.log(tabla);
+        url = 'subirTablas/' + tabla;
+        const variable = await fetch(url, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -136,25 +172,7 @@ if (paginaActual == "/listas.html") {
             },
             body: JSON.stringify(dato)
         });
-    }
-
-    async function enviarListadoMarcas(e) {
-
-
-    }
-
-
-
-    async function enviarListadoServicios(e) {
-
-
-    }
-
-
-    async function enviarListadoTipos(e) {
-
-
-
+        console.log(variable);
     }
     /* fin listas */
 

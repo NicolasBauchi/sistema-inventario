@@ -100,13 +100,13 @@ public class ListasDaoImpl implements ListasDao{
 
     @Override
     public ArrayList<TipoEquipos> nombresTipoEquipos() {
-        String query = "FROM tipoequipos";
+        String query = "FROM TipoEquipos";
         return (ArrayList<TipoEquipos>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
     public TipoEquipos getTipoEquipos(int id) {
-        String query = "FROM TipoEquipos WHERE id='" + id+"'";
+        String query = "FROM TipoEquipos WHERE id='" + id + "'";
         return (TipoEquipos) entityManager.createQuery(query).getResultList();
     }
 

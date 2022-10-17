@@ -24,18 +24,18 @@ public class ListasControler {
         listasDao.agregarCliente(cl);
     }
     @RequestMapping(value = "subirTablas/marcas", method = RequestMethod.POST)
-    public void subirTablaMarca(@PathVariable ArrayList<Marca> elListado){
-        listasDao.agregarMuchasMarcas(elListado);
+    public void subirTablaMarca(@RequestBody Marca marca){
+        listasDao.agregarMarca(marca);
     }
 
     @RequestMapping(value = "subirTablas/servicios", method = RequestMethod.POST)
-    public void subirTablaServicio(@PathVariable ArrayList<Servicios> elListado){
-        listasDao.agregarMuchosServicios(elListado);
+    public void subirTablaServicio(@RequestBody Servicios servicios){
+        listasDao.agregarServicios(servicios);
 
     }
     @RequestMapping(value = "subirTablas/tipoEquipos", method = RequestMethod.POST)
-    public void subirTablaTipoEquipo(@PathVariable ArrayList<TipoEquipos> elListado){
-        listasDao.agregarMuchosTipoEquipos(elListado);
+    public void subirTablaTipoEquipo(@RequestBody TipoEquipos tipoEquipos){
+        listasDao.agregarTipoEquipos(tipoEquipos);
 
     }
 }
