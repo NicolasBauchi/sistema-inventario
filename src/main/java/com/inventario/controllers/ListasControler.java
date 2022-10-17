@@ -38,4 +38,26 @@ public class ListasControler {
         listasDao.agregarTipoEquipos(tipoEquipos);
 
     }
+
+    //Mostrando las tablas:
+
+    @RequestMapping(value = "clientes", method = RequestMethod.GET)
+    public ArrayList<Cliente> getTablaCliente(){
+       return listasDao.nombresClientes();
+    }
+    @RequestMapping(value = "marcas", method = RequestMethod.GET)
+    public ArrayList<Marca> getTablaMarca(){
+        return listasDao.nombresMarcas();
+    }
+
+    @RequestMapping(value = "servicios", method = RequestMethod.GET)
+    public ArrayList<Servicios> getTablaServicios(){
+        return listasDao.nombresServicios();
+
+    }
+    @RequestMapping(value = "tipoEquipos", method = RequestMethod.GET)
+    public ArrayList<TipoEquipos> getTablaTipoEquipos(){
+        return listasDao.nombresTipoEquipos();
+
+    }
 }

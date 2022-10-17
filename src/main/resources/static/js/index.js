@@ -21,6 +21,7 @@ var paginaActual = window.location.pathname;
 /* Aca tengo recibir los datos y procesarlos en el BACK. */
 if (paginaActual == "/index.html") {
     eventoFormulario();
+    cargarListas();
     /* Seccion registro de equipo */
     function eventoFormulario() {
 
@@ -51,6 +52,87 @@ if (paginaActual == "/index.html") {
         });
     }
 
+    async function cargarListas() {
+        /* Cargo las opciones para cada listado: */
+
+        //Cliente:
+        let clientes = await cargarInfo("clientes");
+
+        if (clientes) {
+            let menuCliente = document.getElementById("form-cliente");
+
+            clientes.forEach(el => {
+                let opti = document.createElement("option");
+                opti.value = String(el.nombre);
+                menuCliente.appendChild(opti);
+            });
+        } else {
+            console.log("No hay clientes para cargar.");
+        }
+
+        //Tipo de equipo
+        let tipoEquipos = await cargarInfo("tipoEquipos");
+
+        if (tipoEquipos) {
+            let menuTipoEquipos = document.getElementById("form-tipoequipo");
+
+            tipoEquipos.forEach(el => {
+                let opti = document.createElement("option");
+                opti.value = String(el.nombre);
+                menuTipoEquipos.appendChild(opti);
+            });
+        } else {
+            console.log("No hay tipos de equipos para cargar.");
+        }
+
+        //Marca
+        let marcas = await cargarInfo("marcas");
+
+        if (marcas) {
+            let menuMarcas = document.getElementById("form-marca");
+
+            marcas.forEach(el => {
+                let opti = document.createElement("option");
+                opti.value = String(el.nombre);
+                menuMarcas.appendChild(opti);
+            });
+        } else {
+            console.log("No hay marcas para cargar.");
+        }
+
+
+        //Servicio
+        let servicios = await cargarInfo("servicios");
+
+        if (servicios) {
+            let menuServicio = document.getElementById("form-servicio");
+
+            servicios.forEach(el => {
+                let opti = document.createElement("option");
+                opti.value = String(el.nombre);
+                menuServicio.appendChild(opti);
+            });
+        } else {
+            console.log("No hay servicios para cargar.");
+        }
+
+    }
+
+    async function cargarInfo(tabla) {
+
+        url = tabla;
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = res.json();
+        console.log(data);
+        return data;
+
+    }
     /* Seccion imprimir */
 
     /* fin index */
@@ -87,7 +169,7 @@ if (paginaActual == "/listas.html") {
 
         leerData(archivo, "clientes");
 
-        /* location.reload(); */
+        location.reload();
 
     }
 
@@ -98,7 +180,7 @@ if (paginaActual == "/listas.html") {
 
         leerData(archivo, "marcas");
 
-        /* location.reload(); */
+        location.reload();
     }
 
     async function enviarListadoServicios(e) {
@@ -108,17 +190,17 @@ if (paginaActual == "/listas.html") {
 
         leerData(archivo, "servicios");
 
-        /* location.reload(); */
+        location.reload();
     }
 
     async function enviarListadoTipos(e) {
         e.preventDefault();
         //Acá pregunto si se eligió archivo:
         let archivo = document.getElementById("input-tipos").files[0];
-        
+
         leerData(archivo, "tipoEquipos");
 
-        /* location.reload(); */
+        location.reload();
     }
 
     function leerData(archivo, queTabla) {
@@ -147,7 +229,7 @@ if (paginaActual == "/listas.html") {
                 enviar.nombre = String(arrayColumnasNombre[0]);
 
                 enviarDataServer(enviar, queTabla);
-                
+
             })
 
             reader.readAsText(archivo);
@@ -158,11 +240,7 @@ if (paginaActual == "/listas.html") {
     }
 
     async function enviarDataServer(dato, tabla) {
-        console.log("Datos antes de ser enviados por fetch: ");
-        console.log("Dato");
-        console.log(dato);
-        console.log("Tabla:");
-        console.log(tabla);
+
         url = 'subirTablas/' + tabla;
         const variable = await fetch(url, {
             method: 'POST',
@@ -172,7 +250,6 @@ if (paginaActual == "/listas.html") {
             },
             body: JSON.stringify(dato)
         });
-        console.log(variable);
     }
     /* fin listas */
 
