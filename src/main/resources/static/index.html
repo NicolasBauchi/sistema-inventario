@@ -60,9 +60,9 @@
                     <label for="form-propiedad" class="form-label text-white">Propiedad</label>
                     <select class="form-select" aria-label="Default select example" name="form-propiedad"
                         id="form-propiedad">
-                        <option selected value="propio">Propio</option>
-                        <option value="alquilado">Alquilado</option>
-                        <option value="comodato">Comodato</option>
+                        <option selected value="Propio">Propio</option>
+                        <option value="Alquilado">Alquilado</option>
+                        <option value="Comodato">Comodato</option>
                     </select>
                 </div>
                 <div class="mb-3 col-12 col-md-6 d-block row">
@@ -81,6 +81,12 @@
 
 
                 </div>
+
+                <div class="mb-3  col-12 col-md-6 d-block row">
+                    <label for="form-modelo" class="form-label text-white">Modelo</label>
+                    <input type="text" class="form-control-lg" id="form-modelo" name="form-modelo" required>
+                </div>
+
                 <div class="mb-3  col-12 col-md-6 d-block row">
 
                     <label for="form-marca" class="form-label text-white">Marca</label>
@@ -91,27 +97,23 @@
 
                     <!-- <input type="text" class="form-control-lg" id="form-marca" name="form-marca" required> -->
                 </div>
-                <div class="mb-3  col-12 col-md-6 d-block row">
-                    <label for="form-modelo" class="form-label text-white">Modelo</label>
-                    <input type="text" class="form-control-lg" id="form-modelo" name="form-modelo" required>
-                </div>
-                <div class="mb-3  col-12 col-md-6 d-block row">
-                    <label for="form-servicio" class="form-label text-white">Servicio</label>
 
-                    <select class="form-select" aria-label="Default select example" name="form-servicio"
-                        id="form-servicio">
-                    </select>
-
-
-                    <!-- <input type="text" class="form-control-lg" id="form-servicio" name="form-servicio" required> -->
-                </div>
                 <div class="mb-4  col-12 col-md-6 d-block row">
                     <label for="form-ubicacion" class="form-label text-white">Ubicación</label>
                     <input type="text" class="form-control-lg" id="form-ubicacion" name="form-ubicacion" required>
                 </div>
 
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary py-2 px-3">Imprimir</button>
+                <div class="mb-3  col-12 col-md-6 d-block row">
+                    <label for="form-servicio" class="form-label text-white">Servicio</label>
+                    <select class="form-select" aria-label="Default select example" name="form-servicio"
+                        id="form-servicio">
+                    </select>
+                    <!-- <input type="text" class="form-control-lg" id="form-servicio" name="form-servicio" required> -->
+                </div>
+
+
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary py-2 px-5">Imprimir</button>
                 </div>
             </form>
 

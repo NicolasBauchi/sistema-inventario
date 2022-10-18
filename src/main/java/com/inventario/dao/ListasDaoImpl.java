@@ -19,13 +19,13 @@ public class ListasDaoImpl implements ListasDao{
 
     @Override
     public ArrayList<Cliente> nombresClientes() {
-        String query = "FROM cliente";
+        String query = "FROM Cliente";
         return (ArrayList<Cliente>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
     public Cliente getCliente(int id) {
-        String query = "FROM cliente WHERE id='" + id+"'";
+        String query = "FROM Cliente WHERE id='" + id+"'";
         return (Cliente) entityManager.createQuery(query).getResultList();
     }
 
@@ -36,7 +36,6 @@ public class ListasDaoImpl implements ListasDao{
 
     @Override
     public void agregarMuchosClientes(ArrayList<String> losClientes) {
-        //entityManager.merge(losClientes);
 
         for (int i = 0; i < losClientes.size(); i++) {
 
@@ -45,6 +44,13 @@ public class ListasDaoImpl implements ListasDao{
             entityManager.merge(cl);
         }
 
+    }
+
+    @Override
+    @Transactional
+    public void truncarTablaClientes() {
+        String query = "TRUNCATE TABLE Cliente";
+        entityManager.createNativeQuery(query);
     }
 
 
@@ -76,7 +82,7 @@ public class ListasDaoImpl implements ListasDao{
 
     @Override
     public ArrayList<Servicios> nombresServicios() {
-        String query = "FROM servicios";
+        String query = "FROM Servicios";
         return (ArrayList<Servicios>) entityManager.createQuery(query).getResultList();
     }
 

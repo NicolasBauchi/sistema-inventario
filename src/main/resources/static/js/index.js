@@ -20,8 +20,9 @@ var paginaActual = window.location.pathname;
 /* index */
 /* Aca tengo recibir los datos y procesarlos en el BACK. */
 if (paginaActual == "/index.html") {
-    eventoFormulario();
     cargarListas();
+    eventoFormulario();
+
     /* Seccion registro de equipo */
     function eventoFormulario() {
 
@@ -56,7 +57,8 @@ if (paginaActual == "/index.html") {
         /* Cargo las opciones para cada listado: */
 
         //Cliente:
-        let clientes = await cargarInfo("clientes");
+        let resCliente = await cargarInfo("clientes");
+        let clientes = resCliente.sort();
 
         if (clientes) {
             let menuCliente = document.getElementById("form-cliente");
@@ -64,14 +66,16 @@ if (paginaActual == "/index.html") {
             clientes.forEach(el => {
                 let opti = document.createElement("option");
                 opti.value = String(el.nombre);
-                menuCliente.appendChild(opti);
+                opti.innerText = String(el.nombre);
+                menuCliente.append(opti);
             });
         } else {
             console.log("No hay clientes para cargar.");
         }
 
         //Tipo de equipo
-        let tipoEquipos = await cargarInfo("tipoEquipos");
+        let resTipoEquipo = await cargarInfo("tipoEquipos");
+        let tipoEquipos = resTipoEquipo.sort();
 
         if (tipoEquipos) {
             let menuTipoEquipos = document.getElementById("form-tipoequipo");
@@ -79,6 +83,7 @@ if (paginaActual == "/index.html") {
             tipoEquipos.forEach(el => {
                 let opti = document.createElement("option");
                 opti.value = String(el.nombre);
+                opti.innerText = String(el.nombre);
                 menuTipoEquipos.appendChild(opti);
             });
         } else {
@@ -86,7 +91,8 @@ if (paginaActual == "/index.html") {
         }
 
         //Marca
-        let marcas = await cargarInfo("marcas");
+        let resMarcas = await cargarInfo("marcas");
+        let marcas = resMarcas.sort();
 
         if (marcas) {
             let menuMarcas = document.getElementById("form-marca");
@@ -94,6 +100,7 @@ if (paginaActual == "/index.html") {
             marcas.forEach(el => {
                 let opti = document.createElement("option");
                 opti.value = String(el.nombre);
+                opti.innerText = String(el.nombre);
                 menuMarcas.appendChild(opti);
             });
         } else {
@@ -102,7 +109,8 @@ if (paginaActual == "/index.html") {
 
 
         //Servicio
-        let servicios = await cargarInfo("servicios");
+        let resServicios = await cargarInfo("servicios");
+        let servicios = resServicios.sort();
 
         if (servicios) {
             let menuServicio = document.getElementById("form-servicio");
@@ -110,6 +118,7 @@ if (paginaActual == "/index.html") {
             servicios.forEach(el => {
                 let opti = document.createElement("option");
                 opti.value = String(el.nombre);
+                opti.innerText = String(el.nombre);
                 menuServicio.appendChild(opti);
             });
         } else {
@@ -129,7 +138,6 @@ if (paginaActual == "/index.html") {
             }
         });
         const data = res.json();
-        console.log(data);
         return data;
 
     }
@@ -148,6 +156,21 @@ if (paginaActual == "/index.html") {
 /* con esto determino que estoy en esta pagina y ejecuto su Js. */
 if (paginaActual == "/listas.html") {
     eventoFormulario();
+    eventoBotonBorrar();
+
+    function eventoBotonBorrar() {
+        let btn = document.getElementById("borrarClientes");
+        console.log(btn.id);
+        btn.addEventListener("click", botonBorrarTabla);
+        console.log("se grabó evento bton");
+    }
+
+    async function botonBorrarTabla() {
+        console.log("estoy presionando el boton por fin");
+
+        const vaciar = await fetch("vaciar/clientes");
+
+    }
 
     function eventoFormulario() {
 

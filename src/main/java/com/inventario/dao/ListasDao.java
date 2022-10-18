@@ -15,6 +15,7 @@ public interface ListasDao {
     public Cliente getCliente(int id);
     public void agregarCliente(Cliente cliente1);
     public void agregarMuchosClientes(ArrayList<String> losClientes);
+    public void truncarTablaClientes();
 
 
 

@@ -60,4 +60,11 @@ public class ListasControler {
         return listasDao.nombresTipoEquipos();
 
     }
+
+    //Vaciar Tablas:
+
+    @RequestMapping(value = "vaciar/clientes", method = RequestMethod.GET)
+    public void vaciarTablaClientes(){
+       listasDao.truncarTablaClientes();
+    }
 }
