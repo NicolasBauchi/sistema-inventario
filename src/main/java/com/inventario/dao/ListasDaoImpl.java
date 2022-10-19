@@ -41,27 +41,11 @@ public class ListasDaoImpl implements ListasDao{
     }
 
     @Override
-    public void agregarMuchosClientes(ArrayList<String> losClientes) {
-
-        for (int i = 0; i < losClientes.size(); i++) {
-
-            Cliente cl = new Cliente();
-            cl.setNombre(""+i);
-            entityManager.merge(cl);
-        }
-
-    }
-
-    @Override
     @Transactional
-    public void truncarTablaClientes() {
-        //String query = "TRUNCATE TABLE Cliente";
-        //entityManager.createNativeQuery(query);
-
-
+    public void truncarTablaCliente() {
         //Esto es lenguaje SQL puro.
         String queryN = "TRUNCATE TABLE clientes";
-        entityManager.createNativeQuery(queryN).getResultList();
+        entityManager.createNativeQuery(queryN).executeUpdate();
     }
 
 
@@ -90,9 +74,12 @@ public class ListasDaoImpl implements ListasDao{
     }
 
     @Override
-    public void agregarMuchasMarcas(ArrayList<Marca> lasMarcas) {
-        entityManager.merge(lasMarcas);
+    public void truncarTablaMarca() {
+        //Esto es lenguaje SQL puro.
+        String queryN = "TRUNCATE TABLE marcas";
+        entityManager.createNativeQuery(queryN).executeUpdate();
     }
+
 
     //Tabla servicios
 
@@ -118,9 +105,12 @@ public class ListasDaoImpl implements ListasDao{
     }
 
     @Override
-    public void agregarMuchosServicios(ArrayList<Servicios> losServicios) {
-
+    public void truncarTablaServicio() {
+        //Esto es lenguaje SQL puro.
+        String queryN = "TRUNCATE TABLE servicios";
+        entityManager.createNativeQuery(queryN).executeUpdate();
     }
+
 
     //Tabla tipo equipos
 
@@ -146,7 +136,11 @@ public class ListasDaoImpl implements ListasDao{
     }
 
     @Override
-    public void agregarMuchosTipoEquipos(ArrayList<TipoEquipos> losTipoEquipos) {
-
+    public void truncarTablaTipo() {
+        //Esto es lenguaje SQL puro.
+        String queryN = "TRUNCATE TABLE tipoequipos";
+        entityManager.createNativeQuery(queryN).executeUpdate();
     }
+
+
 }

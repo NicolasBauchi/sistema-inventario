@@ -145,9 +145,6 @@ if (paginaActual == "/index.html") {
 
 
 
-
-
-
 /* listas */
 /* En esta seccion tengo que subir las listas a la BD */
 /* con esto determino que estoy en esta pagina y ejecuto su Js. */
@@ -156,15 +153,41 @@ if (paginaActual == "/listas.html") {
     eventoBotonBorrar();
 
     function eventoBotonBorrar() {
-        let btn = document.getElementById("borrarClientes");
-        btn.addEventListener("click", botonBorrarTabla);
+        let btnClientes = document.getElementById("borrarClientes");
+        btnClientes.addEventListener("click", botonBorrarTabla);
+
+        let btnMarcas = document.getElementById("borrarMarcas");
+        btnMarcas.addEventListener("click", botonBorrarTabla);
+
+        let btnServicios = document.getElementById("borrarServicios");
+        btnServicios.addEventListener("click", botonBorrarTabla);
+
+        let btnTipos = document.getElementById("borrarTipos");
+        btnTipos.addEventListener("click", botonBorrarTabla);
+
+
+
     }
 
-    async function botonBorrarTabla() {
-        console.log("estoy presionando el boton por fin");
+     function botonBorrarTabla(e) {
+        e.preventDefault();
+        let URL = "";
+        console.log(e.target.id);
 
-        const vaciar = await fetch("vaciar/clientes");
+        if (e.target.id === "borrarClientes") {
+            URL = "vaciar/clientes";
+        }
+        if (e.target.id === "borrarMarcas") {
+            URL = "vaciar/marcas";
+        }
+        if (e.target.id === "borrarServicios") {
+            URL = "vaciar/servicios";
+        }
+        if (e.target.id === "borrarTipos") {
+            URL = "vaciar/tipo-equipos";
+        }
 
+        const vaciar =  fetch(URL);
     }
 
     function eventoFormulario() {

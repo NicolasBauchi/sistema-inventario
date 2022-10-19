@@ -65,6 +65,21 @@ public class ListasControler {
 
     @RequestMapping(value = "vaciar/clientes", method = RequestMethod.GET)
     public void vaciarTablaClientes(){
-       listasDao.truncarTablaClientes();
+       listasDao.truncarTablaCliente();
+    }
+
+    @RequestMapping(value = "vaciar/marcas", method = RequestMethod.GET)
+    public void vaciarTablaMarcas(){
+        listasDao.truncarTablaMarca();
+    }
+
+    @RequestMapping(value = "vaciar/servicios", method = RequestMethod.GET)
+    public void vaciarTablaServicios(){
+        listasDao.truncarTablaServicio();
+    }
+
+    @RequestMapping(value = "vaciar/tipo-equipos", method = RequestMethod.GET)
+    public void vaciarTablaTipoEquipos(){
+        listasDao.truncarTablaTipo();
     }
 }
