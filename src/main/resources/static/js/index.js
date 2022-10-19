@@ -57,16 +57,15 @@ if (paginaActual == "/index.html") {
         /* Cargo las opciones para cada listado: */
 
         //Cliente:
-        let resCliente = await cargarInfo("clientes");
-        let clientes = resCliente.sort();
+        let clientes = await cargarInfo("clientes");
 
         if (clientes) {
             let menuCliente = document.getElementById("form-cliente");
 
             clientes.forEach(el => {
                 let opti = document.createElement("option");
-                opti.value = String(el.nombre);
-                opti.innerText = String(el.nombre);
+                opti.value = String(el[1]);
+                opti.innerText = String(el[1]);
                 menuCliente.append(opti);
             });
         } else {
@@ -74,16 +73,16 @@ if (paginaActual == "/index.html") {
         }
 
         //Tipo de equipo
-        let resTipoEquipo = await cargarInfo("tipoEquipos");
-        let tipoEquipos = resTipoEquipo.sort();
+        let tipoEquipos = await cargarInfo("tipoEquipos");
 
         if (tipoEquipos) {
             let menuTipoEquipos = document.getElementById("form-tipoequipo");
 
             tipoEquipos.forEach(el => {
                 let opti = document.createElement("option");
-                opti.value = String(el.nombre);
-                opti.innerText = String(el.nombre);
+                /* opti.value = String(el.nombre); */
+                opti.value = String(el[1]);
+                opti.innerText = String(el[1]);
                 menuTipoEquipos.appendChild(opti);
             });
         } else {
@@ -91,16 +90,15 @@ if (paginaActual == "/index.html") {
         }
 
         //Marca
-        let resMarcas = await cargarInfo("marcas");
-        let marcas = resMarcas.sort();
+        let marcas = await cargarInfo("marcas");
 
         if (marcas) {
             let menuMarcas = document.getElementById("form-marca");
 
             marcas.forEach(el => {
                 let opti = document.createElement("option");
-                opti.value = String(el.nombre);
-                opti.innerText = String(el.nombre);
+                opti.value = String(el[1]);
+                opti.innerText = String(el[1]);
                 menuMarcas.appendChild(opti);
             });
         } else {
@@ -109,16 +107,15 @@ if (paginaActual == "/index.html") {
 
 
         //Servicio
-        let resServicios = await cargarInfo("servicios");
-        let servicios = resServicios.sort();
+        let servicios = await cargarInfo("servicios");
 
         if (servicios) {
             let menuServicio = document.getElementById("form-servicio");
 
             servicios.forEach(el => {
                 let opti = document.createElement("option");
-                opti.value = String(el.nombre);
-                opti.innerText = String(el.nombre);
+                opti.value = String(el[1]);
+                opti.innerText = String(el[1]);
                 menuServicio.appendChild(opti);
             });
         } else {
@@ -160,9 +157,7 @@ if (paginaActual == "/listas.html") {
 
     function eventoBotonBorrar() {
         let btn = document.getElementById("borrarClientes");
-        console.log(btn.id);
         btn.addEventListener("click", botonBorrarTabla);
-        console.log("se grabó evento bton");
     }
 
     async function botonBorrarTabla() {
@@ -247,11 +242,13 @@ if (paginaActual == "/listas.html") {
                     arrayColumnasNombre.push(dato);
                 }
 
+                /*  Todos los datos */
+                for (let i = 0; i < arrayColumnasNombre.length; i++) {
+                    let enviar = {};
+                    enviar.nombre = String(arrayColumnasNombre[i]);
+                    enviarDataServer(enviar, queTabla);
+                }
 
-                let enviar = {};
-                enviar.nombre = String(arrayColumnasNombre[0]);
-
-                enviarDataServer(enviar, queTabla);
 
             })
 

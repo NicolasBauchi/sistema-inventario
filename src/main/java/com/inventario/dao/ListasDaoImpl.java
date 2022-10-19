@@ -19,8 +19,14 @@ public class ListasDaoImpl implements ListasDao{
 
     @Override
     public ArrayList<Cliente> nombresClientes() {
-        String query = "FROM Cliente";
-        return (ArrayList<Cliente>) entityManager.createQuery(query).getResultList();
+        //Esto es lenguaje SQL puro. - Usando esta opción no devuelve objeto Cliente en Front,
+        // solo un array de arrays.
+        String queryN = "SELECT * FROM clientes ORDER BY nombre_cliente";
+        return (ArrayList<Cliente>) entityManager.createNativeQuery(queryN).getResultList();
+
+
+        //String query = "FROM Cliente";
+        //return (ArrayList<Cliente>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
@@ -49,8 +55,13 @@ public class ListasDaoImpl implements ListasDao{
     @Override
     @Transactional
     public void truncarTablaClientes() {
-        String query = "TRUNCATE TABLE Cliente";
-        entityManager.createNativeQuery(query);
+        //String query = "TRUNCATE TABLE Cliente";
+        //entityManager.createNativeQuery(query);
+
+
+        //Esto es lenguaje SQL puro.
+        String queryN = "TRUNCATE TABLE clientes";
+        entityManager.createNativeQuery(queryN).getResultList();
     }
 
 
@@ -58,8 +69,13 @@ public class ListasDaoImpl implements ListasDao{
 
     @Override
     public ArrayList<Marca> nombresMarcas() {
-        String query = "FROM Marca";
-        return (ArrayList<Marca>) entityManager.createQuery(query).getResultList();
+        //Esto es lenguaje SQL puro.
+        String queryN = "SELECT * FROM marcas ORDER BY nombre_marcas";
+        return (ArrayList<Marca>) entityManager.createNativeQuery(queryN).getResultList();
+
+
+        //String query = "FROM Marca";
+        //return (ArrayList<Marca>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
@@ -82,8 +98,12 @@ public class ListasDaoImpl implements ListasDao{
 
     @Override
     public ArrayList<Servicios> nombresServicios() {
-        String query = "FROM Servicios";
-        return (ArrayList<Servicios>) entityManager.createQuery(query).getResultList();
+        //Esto es lenguaje SQL puro.
+        String queryN = "SELECT * FROM servicios ORDER BY nombre_servicios";
+        return (ArrayList<Servicios>) entityManager.createNativeQuery(queryN).getResultList();
+
+       // String query = "FROM Servicios";
+       // return (ArrayList<Servicios>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
@@ -106,8 +126,12 @@ public class ListasDaoImpl implements ListasDao{
 
     @Override
     public ArrayList<TipoEquipos> nombresTipoEquipos() {
-        String query = "FROM TipoEquipos";
-        return (ArrayList<TipoEquipos>) entityManager.createQuery(query).getResultList();
+        //Esto es lenguaje SQL puro.
+        String queryN = "SELECT * FROM tipoequipos ORDER BY nombre_tipos";
+        return (ArrayList<TipoEquipos>) entityManager.createNativeQuery(queryN).getResultList();
+
+        //String query = "FROM TipoEquipos";
+        //return (ArrayList<TipoEquipos>) entityManager.createQuery(query).getResultList();
     }
 
     @Override
