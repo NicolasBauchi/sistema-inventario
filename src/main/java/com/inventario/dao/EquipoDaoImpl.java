@@ -44,5 +44,13 @@ public class EquipoDaoImpl implements EquipoDao{
         entityManager.merge(equipo);
     }
 
+    @Override
+    @Transactional
+    public void vaciarEquipos() {
+        //Esto es lenguaje SQL puro.
+        String queryN = "TRUNCATE TABLE equipos";
+        entityManager.createNativeQuery(queryN).executeUpdate();
+    }
+
 
 }

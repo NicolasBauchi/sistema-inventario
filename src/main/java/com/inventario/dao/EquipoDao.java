@@ -17,4 +17,6 @@ public interface EquipoDao {
     void eliminar(int id);
 
     void agregar(Equipo equipo);
+
+    public void vaciarEquipos();
 }

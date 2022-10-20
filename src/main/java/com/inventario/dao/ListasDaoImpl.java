@@ -74,6 +74,7 @@ public class ListasDaoImpl implements ListasDao{
     }
 
     @Override
+    @Transactional
     public void truncarTablaMarca() {
         //Esto es lenguaje SQL puro.
         String queryN = "TRUNCATE TABLE marcas";
@@ -105,6 +106,7 @@ public class ListasDaoImpl implements ListasDao{
     }
 
     @Override
+    @Transactional
     public void truncarTablaServicio() {
         //Esto es lenguaje SQL puro.
         String queryN = "TRUNCATE TABLE servicios";
@@ -136,6 +138,7 @@ public class ListasDaoImpl implements ListasDao{
     }
 
     @Override
+    @Transactional
     public void truncarTablaTipo() {
         //Esto es lenguaje SQL puro.
         String queryN = "TRUNCATE TABLE tipoequipos";

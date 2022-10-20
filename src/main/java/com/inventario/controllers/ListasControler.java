@@ -58,7 +58,6 @@ public class ListasControler {
     @RequestMapping(value = "tipoEquipos", method = RequestMethod.GET)
     public ArrayList<TipoEquipos> getTablaTipoEquipos(){
         return listasDao.nombresTipoEquipos();
-
     }
 
     //Vaciar Tablas:

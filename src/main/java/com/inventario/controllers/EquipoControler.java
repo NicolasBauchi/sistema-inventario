@@ -36,7 +36,10 @@ public class EquipoControler {
         equipoDao.editarEquipo(equipo);
     }
 
-
-
+    // Vaciar / truncate tabla equipos
+    @RequestMapping(value = "vaciar/equipos", method = RequestMethod.GET)
+    public void vaciarTablaEquipos(){
+        equipoDao.vaciarEquipos();
+    }
 
 }
