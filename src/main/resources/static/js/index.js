@@ -34,6 +34,7 @@ if (paginaActual == "/index.html") {
             },
             body: JSON.stringify(datos)
         });
+        alert(datos.serie + " cargado con éxito!");
     }
 
     async function cargarListas() {
@@ -147,9 +148,6 @@ if (paginaActual == "/listas.html") {
 
         let btnTipos = document.getElementById("borrarTipos");
         btnTipos.addEventListener("click", botonBorrarTabla);
-
-
-
     }
 
     function botonBorrarTabla(e) {
@@ -173,7 +171,6 @@ if (paginaActual == "/listas.html") {
     }
 
     function eventoFormulario() {
-        console.log("entro a eventoFormulario para subir listas");
         let form_clientes = document.getElementById("form-subida-clientes");
         let form_marcas = document.getElementById("form-subida-marcas");
         let form_servicios = document.getElementById("form-subida-servicios");
@@ -189,12 +186,9 @@ if (paginaActual == "/listas.html") {
         e.preventDefault();
         //Acá pregunto si se eligió archivo:
         let archivo = document.getElementById("input-clientes").files[0];
-        console.log("envió info archivo entro a metodo enviar listado");
 
         leerData(archivo, "clientes");
-
-        location.reload();
-
+        recargarPagina()
     }
 
     async function enviarListadoMarcas(e) {
@@ -203,8 +197,7 @@ if (paginaActual == "/listas.html") {
         let archivo = document.getElementById("input-marcas").files[0];
 
         leerData(archivo, "marcas");
-
-        location.reload();
+        recargarPagina()
     }
 
     async function enviarListadoServicios(e) {
@@ -213,8 +206,7 @@ if (paginaActual == "/listas.html") {
         let archivo = document.getElementById("input-servicios").files[0];
 
         leerData(archivo, "servicios");
-
-        location.reload();
+        recargarPagina()
     }
 
     async function enviarListadoTipos(e) {
@@ -223,8 +215,7 @@ if (paginaActual == "/listas.html") {
         let archivo = document.getElementById("input-tipos").files[0];
 
         leerData(archivo, "tipoEquipos");
-
-        location.reload();
+        recargarPagina();
     }
 
     function leerData(archivo, queTabla) {
@@ -260,8 +251,6 @@ if (paginaActual == "/listas.html") {
                     enviar.nombre = String(arrayColumnasNombre[i]);
                     enviarDataServer(enviar, queTabla);
                 }
-
-
             })
 
             reader.readAsText(archivo);
@@ -282,6 +271,12 @@ if (paginaActual == "/listas.html") {
             },
             body: JSON.stringify(dato)
         });
+
+    }
+    function recargarPagina() {
+        setTimeout(() => {
+            location.reload();
+        }, 5000);
     }
     /* fin listas */
 

@@ -1,7 +1,25 @@
+/* Clases */
+class Equipo {
+
+    constructor(id, cliente, propiedad, serie, tipo_equipo, marca, modelo, servicio, ubicacion) {
+        this.id = id;
+        this.cliente = cliente;
+        this.propiedad = propiedad;
+        this.serie = serie;
+        this.tipo_equipo = tipo_equipo;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.servicio = servicio;
+        this.ubicacion = ubicacion;
+    }
+}
+/* fin clases */
+
+
 /* cargados */
 /* En esta seccion tengo que mostrar los equipos cargados */
 mostrarListado();
-
+eventoBotonVaciarEquipos();
 
 async function mostrarListado() {
     let losEquipos = [];
@@ -75,6 +93,7 @@ function eventoBotones() {
 
         boton.onclick = () => { eliminarEquipo(id) };
     }
+
 }
 
 async function eliminarEquipo(id) {
@@ -88,6 +107,20 @@ async function eliminarEquipo(id) {
     });
     //Recarga pagina:
     location.reload();
+}
+function eventoBotonVaciarEquipos() {
+    /* Boton vaciar listado equipos */
+    let btnEquipos = document.getElementById("borrarEquipos");
+    btnEquipos.addEventListener("click", vaciarListadoEquipos);
+}
+
+function vaciarListadoEquipos(e) {
+    e.preventDefault();
+    console.log("entro metodo vaciar equipos");
+    const data = fetch("vaciar/equipos");
+
+    location.reload();
+
 }
 
 /* fin cargados */

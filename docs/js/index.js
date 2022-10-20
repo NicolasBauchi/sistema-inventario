@@ -1,21 +1,4 @@
-
-/* Clases */
-class Equipo {
-
-    constructor(id, cliente, propiedad, serie, tipo_equipo, marca, modelo, servicio, ubicacion) {
-        this.id = id;
-        this.cliente = cliente;
-        this.propiedad = propiedad;
-        this.serie = serie;
-        this.tipo_equipo = tipo_equipo;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.servicio = servicio;
-        this.ubicacion = ubicacion;
-    }
-}
-
-/* fin clases */
+//Con este código puedo ver en qué página me encuentro actualmente:
 var paginaActual = window.location.pathname;
 /* index */
 /* Aca tengo recibir los datos y procesarlos en el BACK. */
@@ -51,6 +34,7 @@ if (paginaActual == "/index.html") {
             },
             body: JSON.stringify(datos)
         });
+        alert(datos.serie + " cargado con éxito!");
     }
 
     async function cargarListas() {
@@ -164,15 +148,11 @@ if (paginaActual == "/listas.html") {
 
         let btnTipos = document.getElementById("borrarTipos");
         btnTipos.addEventListener("click", botonBorrarTabla);
-
-
-
     }
 
-     function botonBorrarTabla(e) {
+    function botonBorrarTabla(e) {
         e.preventDefault();
         let URL = "";
-        console.log(e.target.id);
 
         if (e.target.id === "borrarClientes") {
             URL = "vaciar/clientes";
@@ -187,11 +167,10 @@ if (paginaActual == "/listas.html") {
             URL = "vaciar/tipo-equipos";
         }
 
-        const vaciar =  fetch(URL);
+        const vaciar = fetch(URL);
     }
 
     function eventoFormulario() {
-
         let form_clientes = document.getElementById("form-subida-clientes");
         let form_marcas = document.getElementById("form-subida-marcas");
         let form_servicios = document.getElementById("form-subida-servicios");
@@ -209,9 +188,7 @@ if (paginaActual == "/listas.html") {
         let archivo = document.getElementById("input-clientes").files[0];
 
         leerData(archivo, "clientes");
-
-        location.reload();
-
+        recargarPagina()
     }
 
     async function enviarListadoMarcas(e) {
@@ -220,8 +197,7 @@ if (paginaActual == "/listas.html") {
         let archivo = document.getElementById("input-marcas").files[0];
 
         leerData(archivo, "marcas");
-
-        location.reload();
+        recargarPagina()
     }
 
     async function enviarListadoServicios(e) {
@@ -230,8 +206,7 @@ if (paginaActual == "/listas.html") {
         let archivo = document.getElementById("input-servicios").files[0];
 
         leerData(archivo, "servicios");
-
-        location.reload();
+        recargarPagina()
     }
 
     async function enviarListadoTipos(e) {
@@ -240,13 +215,13 @@ if (paginaActual == "/listas.html") {
         let archivo = document.getElementById("input-tipos").files[0];
 
         leerData(archivo, "tipoEquipos");
-
-        location.reload();
+        recargarPagina();
     }
 
     function leerData(archivo, queTabla) {
         const arrayColumnasNombre = [];
         if (archivo) {
+            console.log("Entro a leer archivo en metodo leerData");
             let reader = new FileReader();
             reader.addEventListener('load', (evt) => {
                 //Acá obtengo el archivo subido:
@@ -254,15 +229,20 @@ if (paginaActual == "/listas.html") {
 
                 /* Aca tengo que trabajar con el archivo CSV.
                 antes de enviar la info al server.*/
-                let lasLíneas = datos.split("\r\n");
+                //Este parametro de split es para abarcar todo tipo de salto de linea
+                let lasLineas = datos.split(/[\r\n]+/gm);
                 //Aca podría empezar el indice i = 1 para saltarme el encabezado
                 //si lo tuviera el archivo csv
-                for (let i = 0; i < lasLíneas.length - 1; i++) {
-                    let columna = lasLíneas[i].split(";");
+                for (let i = 0; i < lasLineas.length - 1; i++) {
+                    let columna = lasLineas[i].split(";");
                     //elijo columna 0 porque se guarda el nombre, dato que me interesa
                     //si quiero otro cambio el indice de columna[].
-                    let dato = String(columna[0]);
-                    arrayColumnasNombre.push(dato);
+                    let dato = String(columna[1]).replaceAll(`"`, '');//saco las comillas de los datos
+                    //IF: para filtrar los campos vacíos
+                    if (dato !== "") {
+                        arrayColumnasNombre.push(dato);
+                    }
+
                 }
 
                 /*  Todos los datos */
@@ -271,8 +251,6 @@ if (paginaActual == "/listas.html") {
                     enviar.nombre = String(arrayColumnasNombre[i]);
                     enviarDataServer(enviar, queTabla);
                 }
-
-
             })
 
             reader.readAsText(archivo);
@@ -293,6 +271,12 @@ if (paginaActual == "/listas.html") {
             },
             body: JSON.stringify(dato)
         });
+
+    }
+    function recargarPagina() {
+        setTimeout(() => {
+            location.reload();
+        }, 5000);
     }
     /* fin listas */
 
