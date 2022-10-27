@@ -98,4 +98,24 @@ public class Equipo {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
+
+    //Data para imprimir:
+    public String generarTicket(){
+        String data = "";
+
+        //Logo biotrust
+        data+= "BIOTRUST" + "\n";
+
+        //QR
+        data+= "codigo de QR para copiar";
+
+        //Datos del equipo
+        data+= this.getCliente() + "\n";
+        data+= "SN: " + this.getSerie() + "\n";
+        data+= "Mod: " + this.getModelo() + "\n";
+        data+= "Marca: " + this.getMarca() + "\n";
+        data+= "Typ: " + this.getTipo_equipo() + "\n";
+
+        return data;
+    }
 }

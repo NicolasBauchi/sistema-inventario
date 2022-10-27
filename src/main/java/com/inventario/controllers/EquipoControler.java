@@ -3,6 +3,7 @@ package com.inventario.controllers;
 import com.inventario.dao.EquipoDao;
 import com.inventario.models.Equipo;
 import com.inventario.service.ExportarCSV;
+import com.inventario.service.ImprimirEtiqueta;
 import org.hibernate.annotations.common.reflection.XMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,9 @@ public class EquipoControler {
     @Autowired
     private ExportarCSV exCSV;
 
+    @Autowired
+    private ImprimirEtiqueta ticket;
+
     @RequestMapping(value = "equipos", method = RequestMethod.GET)
     public ArrayList<Equipo> getEquipos(){
         return equipoDao.getEquipos();
@@ -30,6 +34,10 @@ public class EquipoControler {
     public void agregarEquipo(@RequestBody Equipo equipo){
         //con RequestBody: convierte el json que recibe en un objeto Equipo automaticamente.
         equipoDao.agregar(equipo);
+
+        //Acá tiene que imprimir:
+
+        ticket.imprimir(equipo);
     }
 
     //Eliminar 1 equipo
