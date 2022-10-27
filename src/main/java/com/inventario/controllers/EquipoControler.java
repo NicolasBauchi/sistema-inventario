@@ -2,8 +2,13 @@ package com.inventario.controllers;
 
 import com.inventario.dao.EquipoDao;
 import com.inventario.models.Equipo;
+import com.inventario.service.ExportarCSV;
+import org.hibernate.annotations.common.reflection.XMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @RestController
@@ -11,6 +16,9 @@ public class EquipoControler {
 
     @Autowired
     private EquipoDao equipoDao;
+
+    @Autowired
+    private ExportarCSV exCSV;
 
     @RequestMapping(value = "equipos", method = RequestMethod.GET)
     public ArrayList<Equipo> getEquipos(){
@@ -40,6 +48,14 @@ public class EquipoControler {
     @RequestMapping(value = "vaciar/equipos", method = RequestMethod.GET)
     public void vaciarTablaEquipos(){
         equipoDao.vaciarEquipos();
+    }
+
+    @RequestMapping(value = "descargarListado", method = RequestMethod.GET)
+    public void imprimirInfo(HttpServletResponse servletResponse) throws IOException {
+
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition","attachment; filename=\"listado.csv\"");
+        exCSV.listadoEquipos(servletResponse.getWriter());
     }
 
 }

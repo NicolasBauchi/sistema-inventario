@@ -1,6 +1,8 @@
 package com.inventario.dao;
 
 import com.inventario.models.Equipo;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -51,6 +53,8 @@ public class EquipoDaoImpl implements EquipoDao{
         String queryN = "TRUNCATE TABLE equipos";
         entityManager.createNativeQuery(queryN).executeUpdate();
     }
+
+
 
 
 }

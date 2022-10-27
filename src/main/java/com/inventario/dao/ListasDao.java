@@ -5,7 +5,6 @@ import com.inventario.models.Servicios;
 import com.inventario.models.TipoEquipos;
 import com.inventario.models.Cliente;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public interface ListasDao {

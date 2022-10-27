@@ -1,3 +1,5 @@
+eventoDescargarCsv();
+
 //Con este código puedo ver en qué página me encuentro actualmente:
 var paginaActual = window.location.pathname;
 /* index */
@@ -276,8 +278,22 @@ if (paginaActual == "/listas.html") {
     function recargarPagina() {
         setTimeout(() => {
             location.reload();
-        }, 5000);
+        }, 8000);
     }
     /* fin listas */
 
+}
+
+function eventoDescargarCsv() {
+    let btnDescarga = document.getElementById("descargarCsv");
+    btnDescarga.addEventListener("click", solicitudDescarga);
+    console.log("cargó evento descarga");
+}
+function solicitudDescarga(e) {
+    e.preventDefault();
+    window.location.assign("http://localhost:8080/descargarListado");
+    /* const res = fetch("descargarListado");
+    if (res) {
+        console.log("envió fetch descarga");
+    } */
 }

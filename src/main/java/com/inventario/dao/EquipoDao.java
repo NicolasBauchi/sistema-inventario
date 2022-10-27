@@ -19,4 +19,6 @@ public interface EquipoDao {
     void agregar(Equipo equipo);
 
     public void vaciarEquipos();
+
+    //public void imprimirInfoBD();
 }
